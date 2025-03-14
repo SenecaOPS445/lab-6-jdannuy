@@ -1,25 +1,31 @@
 #!/usr/bin/env python3
 # Author ID: Jhanlyn Brita Dannuy - jdannuy
 
+
+#!/usr/bin/env python3
+# Author ID: [seneca_id]  # Replace with your actual Seneca ID
+
 class Student:
-    # Define name and student ID number
+    # Constructor to initialize name, student number, and an empty courses dictionary
     def __init__(self, name, number):
         self.name = name
         self.number = number
         self.courses = {}
 
-    # Display student name and number
+    # Method to display student details
     def displayStudent(self):
         print('Student Name: ' + self.name)
         print('Student Number: ' + self.number)
 
-    # Add a new course and grade to the student record
+    # Method to add a course and grade
     def addGrade(self, course, grade):
         self.courses[course] = grade
 
-    # Calculate and display GPA
+    # Method to calculate and display GPA
     def displayGPA(self):
-        gpa = 0.0
-        for course in self.courses.keys():
-            gpa += self.courses[course]
-        print(f'GPA of student {self.name} is {gpa / len(self.courses):.2f}')
+        if len(self.courses) == 0:
+            print('No courses available to calculate GPA.')
+            return
+        
+        gpa = sum(self.courses.values()) / len(self.courses)
+        print(f'GPA of student {self.name} is {gpa:.2f}')
